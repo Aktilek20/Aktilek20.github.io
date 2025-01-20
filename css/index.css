@@ -259,6 +259,7 @@ button:hover {
   border: var(--border);
 }
 
+
 /*Шапка*/
 .header {
   display: flex;
