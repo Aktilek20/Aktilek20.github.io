@@ -1,4 +1,5 @@
 @charset "UTF-8";
+
 /**
   Нормализация блочной модели
  */
@@ -30,15 +31,15 @@ body,
      у которых есть атрибут class
     */
 :where(h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-ul,
-ol,
-dl):where([class]) {
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  ul,
+  ol,
+  dl):where([class]) {
   margin-block: 0;
 }
 
@@ -152,7 +153,7 @@ label {
      атрибут fill со значением 'none' или начинается с 'url')
     */
 :where([fill]:not([fill=none],
-[fill^=url])) {
+    [fill^=url])) {
   fill: currentColor;
 }
 
@@ -162,7 +163,7 @@ label {
      атрибут stroke со значением 'none')
     */
 :where([stroke]:not([stroke=none],
-[stroke^=url])) {
+    [stroke^=url])) {
   stroke: currentColor;
 }
 
@@ -186,6 +187,7 @@ svg * {
      которые предпочитают их не использовать
     */
 @media (prefers-reduced-motion: reduce) {
+
   *,
   ::before,
   ::after {
@@ -195,6 +197,7 @@ svg * {
     scroll-behavior: auto !important;
   }
 }
+
 :root {
   --color-dark: #1B1C21;
   --color-light: #ffffff;
@@ -258,6 +261,7 @@ button {
 button:hover {
   border: var(--border);
 }
+
 
 
 /*Шапка*/
@@ -332,7 +336,7 @@ button:hover {
 .head__left {
   display: flex;
   position: absolute;
-  right: 0;
+  right: 16px;
   gap: 20px;
 }
 
@@ -357,7 +361,6 @@ button:hover {
 
 .title {
   margin-block-start: 24px;
-  margin-block-end: 24px;
   font-size: 28px;
   font-weight: 700;
   line-height: 1.43;
@@ -378,32 +381,53 @@ button:hover {
 }
 
 /*Меню*/
-.menu__wrapper {
-  overflow: hidden;
-}
-
-.menu__limiter {
-  padding-bottom: 20px;
-  margin-bottom: -20px;
-  -webkit-mask-image: linear-gradient(90deg, transparent 0, rgba(0, 0, 0, 0.25) 9px, #000 18px, #000 calc(100% - 18px), rgba(0, 0, 0, 0.25) calc(100% - 9px), transparent);
-          mask-image: linear-gradient(90deg, transparent 0, rgba(0, 0, 0, 0.25) 9px, #000 18px, #000 calc(100% - 18px), rgba(0, 0, 0, 0.25) calc(100% - 9px), transparent);
-  overflow-x: scroll;
-  -webkit-overflow-scrolling: touch;
-}
 
 .menu {
+  overflow: hidden;
+  margin-inline: 0px;
+  margin-block: 0px;
+  list-style-type: none;
+}
+
+.list__menu {
   display: flex;
-  margin-inline-start: 16px;
-  margin-block-end: 24px;
+  align-items: center;
+  list-style: none;
+  padding-bottom: 20px;
+  margin-bottom: -20px;
+  mask-image: linear-gradient(90deg, transparent 0, rgba(0, 0, 0, 0.25) 9px, #000 18px, #000 calc(100% - 18px), rgba(0, 0, 0, 0.25) calc(100% - 9px), transparent);
+  overflow: scroll;
 }
 
-.menu-button {
+.link__menu{
+
   color: var(--color-dark-gray);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
   padding-inline: 16px;
+  padding-block: 8px;
 }
 
-.menu-button-2 {
-  display: none;
+.block__link__menu{
+  margin: 0 0 0 0;
+}
+
+.block__link__menu{
+  width: auto;
+  height: auto;
+  margin: 20px 0px 20px 0;
+}
+.link__menu__item{
+  margin-left: 20px;
+}
+
+.link__menu:focus{
+ border-radius: var(--border-radius);
+  outline: 2px solid var(--color-pang);
+  outline-offset: 1px;
 }
 
 /*Контент*/
@@ -457,26 +481,31 @@ button:hover {
 
 /*Адаптация*/
 @media (min-width: 768px) {
+
   /*Шапка*/
   .header {
     width: 768px;
     height: 88px;
     margin-inline: 24px;
   }
+
   .block-right {
     right: 20px;
   }
+
   .block-1,
   .head__left {
     display: flex;
     width: 768px;
     height: 88px;
   }
+
   .head__left {
     align-items: center;
     gap: 20px;
     left: 24px;
   }
+
   .header__line {
     display: initial;
     border: none;
@@ -487,19 +516,23 @@ button:hover {
     margin-inline-start: 0;
     margin-inline-end: 0;
   }
+
   .block-5 {
     display: flex;
     align-items: center;
     gap: 16px;
   }
+
   .between {
     position: absolute;
     right: 156px;
   }
+
   /*Заголовок*/
   .section-title {
     margin-inline: -7px;
   }
+
   .title {
     margin-block-start: 34px;
     margin-block-end: 22px;
@@ -507,11 +540,13 @@ button:hover {
     line-height: 1.43;
     letter-spacing: -0.02em;
   }
+
   /*Меню*/
   .menu {
     margin-inline-start: 24px;
     margin-block-end: 32px;
   }
+
   /*Контент*/
   .content-text {
     display: inline-block;
@@ -519,46 +554,55 @@ button:hover {
     margin-inline-start: 0px;
     margin-inline-end: 48px;
   }
+
   .content-2 {
     display: inline-flex;
     margin-inline-start: 24px;
     margin-inline-end: 24px;
   }
+
   .content-text-2 {
     display: inline-block;
     margin-block-start: 16px;
   }
+
   .link {
     margin-block-start: 10px;
     margin-block-end: 0px;
   }
+
   .content-img {
     display: block;
     float: right;
     margin-block-end: 45px;
   }
+
   .content-text-3 {
     display: none;
   }
+
   .block-3-2 {
     display: none;
   }
 }
+
 @media (min-width: 1120px) {
   .menu {
     display: block;
   }
-  .menu-button-2 {
-    display: inline-flex;
-    color: var(--color-dark-gray);
-    padding-inline: 16px;
-  }
+.list__menu{
+  display: flex;
+  flex-wrap: wrap;
+}
+
   .content-text {
     margin-inline-end: 35px;
   }
+
   .header {
     display: none;
   }
+
   .section-title {
     gap: 33px;
     margin-inline-end: 0px;
@@ -566,10 +610,12 @@ button:hover {
     margin-block-end: 0px;
     margin-inline-start: 0px;
   }
+
   .block-3-1 {
     align-items: center;
     margin-inline-end: 33px;
   }
+
   .block-3-1,
   .block-3-1__title {
     display: flex;
@@ -579,22 +625,29 @@ button:hover {
     letter-spacing: -0.01em;
     gap: 32px;
   }
+
   .header-button {
     margin-inline-start: -25px;
   }
+
   .content {
     display: flex;
     justify-content: space-between;
     margin-block-start: 42px;
     margin-block-end: 8px;
   }
+
   .menu__line {
     display: none;
   }
+
   .content-text-3 {
     display: initial;
   }
+
   .content-img {
     margin-block-end: 50px;
   }
-}/*# sourceMappingURL=index-2.css.map */
+}
+
+/*# sourceMappingURL=index-2.css.map */
